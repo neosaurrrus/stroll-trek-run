@@ -1,0 +1,15 @@
+<% include ./partials/header %>
+<link rel='stylesheet' href='../stylesheets/style.css'>
+<div class="formWrapper">
+     <h1 class="fancyHeading logo">Stroll Trek Run</h1>
+    <h2>Let's get you up and running or <a href="/login">log in </a> if you are already a member</h2>
+    <form  class="smallForm" action="/register" method="POST">
+        <p class="whiteBackground formLabel">Username</p>
+        <input type='text' name="username" placeholder="Username">
+        <p class="whiteBackground formLabel">Password?</p>
+        <input type='password' name="password" placeholder="Password">
+        <p></p>
+        <button class="bigButton">Sign Up</button>
+    </form>
+</div>
+<% include ./partials/footer %>

@@ -1,0 +1,51 @@
+<% include ../partials/header %>
+
+<link rel='stylesheet' href='../stylesheets/style.css'>
+<div class="formWrapper">
+    <h1 class="fancyHeading logo">Stroll Trek Run</h1>
+    <h2>Let's make a new trail...</h2>
+    <form class="bigForm" action="/trails" method="POST">
+        <p class="formLabel">Trail Name</p>
+        <input type='text' required maxlength="70" name="name" placeholder="Name of the Trail - E.g Snowdon, Miners Path">
+       
+        <p class="formLabel">Tagline</p>
+        <input type='text' maxlength="70" required name="tagline" placeholder="Provide a short (70 chars or less) summary of why you like this trail">
+        
+        <p class="formLabel">Image Location</p>
+        <input type='text' name="image" placeholder="/images/placeholder.jpg">
+        
+        <p class="formLabel">Time to complete (Walking hours)</p>
+        <input type='number' name="timeToComplete" class="smallInput" value='1' placeholder="1">
+        
+        <p class="formLabel">Trail Difficulty</p>
+        <select id="difficulty" name="difficulty">
+        <option value="0">0 - Toddlers could do this trail</option>
+        <option value="1">1 - A relaxing walk for anyone</option>
+        <option value="2">2 - Needs an average level of fitness</option>
+        <option value="3">3 - For those wanting to push themselves</option>
+        <option value="4">4 - High fitness and experience needed</option>
+        </select>
+        <p class="formLabel">Trail Features</p>
+        <div class="features">
+            <input type="checkbox" id="toilets" name="toilets" value="true">
+            <label for="toilets">Toilets</label>
+            <input type="checkbox" id ="parking" name="parking" value="true">
+            <label for="parking">Parking</label>
+            <input type="checkbox" id="water" name="water" value="true">
+            <label for="water" >Free water</label>
+            <input type="checkbox" id="refreshments" name="refreshments" value="true">
+            <label for="refreshments" >Refreshments</label>
+            <input type="checkbox" id="dogs" name="dogs" value="true">
+            <label for="dogs" >Dog friendly</label>
+            <input type="checkbox" id="wheelchair" name="wheelchair" value="true">
+            <label for="wheelchair" >Wheelchair Accessible</label>
+        </div>
+       
+        <p class="formLabel">Full description</p>
+        <textarea id="fullDescription" rows="20" cols="80" required name="description" placeholder="Explain the route step by step, be sure to include distances and landmarks as well as any obstacles that need passing"></textarea>
+        <p></p>
+        <button class="bigButton">Submit Your Trail</button>
+    </form>
+</div>
+<% include ../partials/footer %>
+

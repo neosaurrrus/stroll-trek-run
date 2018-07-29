@@ -1,0 +1,115 @@
+<% include ../partials/header %>
+<div class="showWrapper">
+    <div class="showHero">
+        <img class="heroImage" src="<%= trail.image %>">
+        <div class="heroText">
+            <h1><%=trail.name%></h1>
+            <h2><i>"<%=trail.tagline %>"</i></h2>
+            <h3> Submitted by <%= trail.author.username %> </h3>
+               <% if (currentUser && trail.author.id.equals(currentUser._id)){ %>
+            <div class="heroButtons">
+                <a href="/trails/<%= trail._id %>/edit"><button class="smallButton edit">Edit</button></a>
+                <form action="/trails/<%= trail._id%>?_method=DELETE" method="POST">
+                    <button class="smallButton delete">Delete</button>
+                </form>
+            </div>
+        <% } %>
+        </div>
+    </div>
+    
+    <div>
+    <p></p>
+    </div>
+
+    <div class="showDetails">
+        <section class="keyPoints">
+                <div class="keyDetails">
+                    <div>
+                        <i class="fas fa-3x fa-car"></i>
+                        <h3>Takes <%=trail.timeToComplete %> hours</h3>
+                    </div>
+                    <div class="trailDetail">
+                        <i class="fas fa-3x fa-beer"></i>    
+                        <h3>Difficulty: <%=trail.difficulty %>/4</h3>
+                    </div>
+                </div>
+
+                <div class="keyFeatures">
+                    <% if (trail.toilets === true){ %>
+                        <div class="trailFeature">
+                            <i class="fas fa-2x fa-bath"></i>
+                            <p>Toilets</p>
+                        </div>
+                    <% } %>
+                    <% if (trail.parking === true){ %>
+                        <div class="trailFeature">
+                            <i class="fas fa-2x fa-car"></i>
+                            <p>Parking</p>
+                        </div>
+                    <% } %>
+
+                    <% if (trail.water === true){ %>
+                        <div class="trailFeature">
+                            <i class="fas fa-2x fa-beer"></i>
+                            <p>Free Water</p>
+                        </div>
+                    <% } %>
+                
+                    <% if (trail.refreshments === true){ %>
+                        <div class="trailFeature">
+                            <i class="fas fa-2x fa-cookie-bite"></i>
+                            <p>Refreshments</p>
+                        </div>
+                    <% } %>
+                    <% if (trail.dogs === true){ %>
+                        <div class="trailFeature">
+                            <i class="fas fa-2x fa-frog"></i>
+                            <p>Dog Friendly</p>
+                        </div>
+                    <% } %>
+                    <% if (trail.wheelchair === true){ %>
+                        <div class="trailFeature">
+                            <i class="fas fa-2x fa-wheelchair"></i>
+                            <p>Wheelchair Accessible</p>
+                        </div>
+                    <% } %>
+                </div>
+        </section>
+
+        <section class="about">
+            <h2> The Trail</h2>
+            <p><%=trail.description%></p>
+        </section>
+
+<--- Comments ---->
+
+        <section>
+            <div class="commentHeader">
+                <% if (trail.comments.length < 2){ %>
+                    <h2>Comment</h2>
+                <% } else { %>
+                    <h2><%= trail.comments.length %> comments</h2>
+                <% } %>  
+                <p><a href="<%=trail._id%>/comments/new"<button class="smallButton">Add a Comment</button></a></p>
+            </div>
+
+            <% trail.comments.forEach(comment => { %>
+                <div class="comment">
+                    <div class="commentText"> 
+                        <strong><%= comment.author.username %></strong> | <em class="tinyText"> 20th September 2018 13:45</em>
+                        <p><%=comment.text%></p>
+                    </div>
+                    <div class="commentButtons">
+                        <% if (currentUser && comment.author.id.equals(currentUser._id)){ %>
+                            <a href="/trails/<%= trail._id %>/comments/<%= comment._id %>/edit"> <button class="smallButton edit">Edit</button></a>
+                            <form action="/trails/<%= trail._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                            <button class="smallButton delete">Delete</button>
+                            </form>
+                    <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        </section>
+
+    </div>
+</div>

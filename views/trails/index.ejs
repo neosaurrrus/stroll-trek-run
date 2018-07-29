@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+<div class="trailWrapper">
+    <% trails.forEach(trail =>{ %>
+        <div class="trail">
+            <img src="<%=trail.image %>">
+            <h2><%= trail.name %></h2>
+            <p>"...<%=trail.tagline%>..."</p>
+            <em>by <%= trail.author.username %></em>
+            <a href="/trails/<%= trail._id %>"><button class="bigButton">View</button></a>
+        </div>
+    <% }); %>
+</div>
+<% include ../partials/footer %>

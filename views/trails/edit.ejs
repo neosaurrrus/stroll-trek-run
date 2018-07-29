@@ -1,0 +1,90 @@
+<% include ../partials/header %>
+
+<link rel='stylesheet' href='/stylesheets/style.css'>
+<div class="formWrapper">
+    <h1 class="fancyHeading logo">Stroll Trek Run</h1>
+    <h2>Let's edit <%=trail.name%></h2>
+    <form class="bigForm" action="/trails/<%=trail._id%>?_method=PUT" method="POST">
+            <p class="formLabel">Trail Name</p>
+        <input type='text' required maxlength="70" name="trail[name]" value="<%=trail.name%>">
+       
+        <p class="formLabel">Tagline</p>
+        <input type='text' maxlength="70" required name="trail[tagline]" value="<%=trail.tagline%>">
+        
+        <p class="formLabel">Image Location</p>
+        <input type='text' name="trail[image]"  value="<%=trail.image%>">
+        
+        <p class="formLabel">Time to complete (Walking hours)</p>
+        <input type='number' name="trail[timeToComplete]" class="smallInput"  value="<%=trail.timeToComplete%>">
+        
+        <p class="formLabel">Trail Difficulty</p>
+        <select id="difficulty" name="trail[difficulty]"  value="<%=trail.difficulty%>">
+        <option value="0">0 - Toddlers could do this trail</option>
+        <option value="1">1 - A relaxing walk for anyone</option>
+        <option value="2">2 - Needs an average level of fitness</option>
+        <option value="3">3 - For those wanting to push themselves</option>
+        <option value="4">4 - High fitness and experience needed</option>
+        </select>
+        
+        <p class="formLabel">Trail Features</p>
+        <div class="features">
+        
+            <% if (trail.toilets === true) { %>
+                <%= trail.toilets %>
+                <input type="checkbox" id="toilets" name="trail[toilets]" value="true" checked>
+                <%= trail.toilets %>
+            <% } else { %>
+                <input type="checkbox" id="toilets" name="trail[toilets]" value="true">
+            <% } %>
+            <label for="toilets">Toilets</label>
+
+             <% if (trail.parking === true) { %>
+                <input type="checkbox" id="parking" name="trail[parking]" value="true" checked>
+                <input type="hidden" name="trail[parking]" value="false">
+            <% } else { %>
+                <input type="checkbox" id="parking" name="trail[parking]" value="true">
+            <% } %>
+            <label for="parking">parking</label>
+
+             <% if (trail.water === true) { %>
+                <input type="checkbox" id="water" name="trail[water]" value="true" checked>
+                <input type="hidden" name="trail[water]" value="false">
+            <% } else { %>
+                <input type="checkbox" id="water" name="trail[water]" value="true">
+            <% } %>
+            <label for="water">water</label>
+            
+             <% if (trail.refreshments === true) { %>
+                <input type="checkbox" id="refreshments" name="trail[refreshments]" value="true" checked>
+                <input type="hidden" name="trail[refreshments]" value="false">
+            <% } else { %>
+                <input type="checkbox" id="refreshments" name="trail[refreshments]" value="true">
+            <% } %>
+            <label for="refreshments">refreshments</label>
+
+            <% if (trail.dogs === true) { %>
+                <input type="checkbox" id="dogs" name="trail[dogs]" value="true" checked>
+                <input type="hidden" name="trail[dogs]" value="false">
+            <% } else { %>
+                <input type="checkbox" id="dogs" name="trail[dogs]" value="true">
+            <% } %>
+            <label for="dogs">dogs</label>
+            
+            <% if (trail.wheelchair === true) { %>
+                <input type="checkbox" id="wheelchair" name="trail[wheelchair]" value="true" checked>
+                <input type="hidden" name="trail[wheelchair]" value="false">
+            <% } else { %>
+                <input type="checkbox" id="wheelchair" name="trail[wheelchair]" value="true">
+            <% } %>
+            <label for="wheelchair">wheelchair</label>
+        </div>
+       
+        <p class="formLabel">Full description</p>
+        <textarea id="fullDescription" rows="20" cols="80" required name="description"><%=trail.description%></textarea>
+        <p></p>
+        <button class="bigButton">Save your changes</button>
+    </form>
+</div>
+<% include ../partials/footer %>
+
+
