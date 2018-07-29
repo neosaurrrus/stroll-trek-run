@@ -16,11 +16,9 @@
         <% } %>
         </div>
     </div>
-    
     <div>
     <p></p>
     </div>
-
     <div class="showDetails">
         <section class="keyPoints">
                 <div class="keyDetails">
@@ -75,14 +73,10 @@
                     <% } %>
                 </div>
         </section>
-
         <section class="about">
             <h2> The Trail</h2>
             <p><%=trail.description%></p>
         </section>
-
-<--- Comments ---->
-
         <section>
             <div class="commentHeader">
                 <% if (trail.comments.length < 2){ %>
@@ -92,7 +86,6 @@
                 <% } %>  
                 <p><a href="<%=trail._id%>/comments/new"<button class="smallButton">Add a Comment</button></a></p>
             </div>
-
             <% trail.comments.forEach(comment => { %>
                 <div class="comment">
                     <div class="commentText"> 
@@ -110,6 +103,5 @@
                 </div>
             <% }) %>
         </section>
-
     </div>
 </div>
