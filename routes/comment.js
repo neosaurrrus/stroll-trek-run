@@ -75,9 +75,18 @@ router.post('/', middleware.isLoggedIn, (req, res) => {
                     req.flash("error", "Hmm that's odd: " + err.message);
                     res.redirect("/home")
                 } else {
-                    //add username and id to comment and then save comment
+                    //add username, date and id to comment and then save comment
                     comment.author.id = req.user._id;
                     comment.author.username = req.user.username;
+                    let dateOptions = {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    };
+                    var today = new Date();
+                    comment.date = today.toUTCString("en-US", dateOptions)
+                    console.log(comment.date);
                     comment.save();
                     trail.comments.push(comment);
                     trail.save();

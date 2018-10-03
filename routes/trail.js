@@ -40,7 +40,6 @@ router.post('/',middleware.isLoggedIn, (req, res) => {
 //NEW - Show New Trail form
 router.get('/new', middleware.isLoggedIn, (req, res) => {
     res.render('trails/new');
-
 })
 
 
@@ -90,6 +89,7 @@ router.get('/:id', (req, res) => {
     Trail.findById(req.params.id).populate("comments").exec((err, foundTrail) => {
         if (err) {
             console.log(err)
+            res.redirect("/trails");
         } else {
             res.render("trails/show", {
                 trail: foundTrail

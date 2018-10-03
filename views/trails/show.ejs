@@ -89,8 +89,9 @@
             <% trail.comments.forEach(comment => { %>
                 <div class="comment">
                     <div class="commentText"> 
-                        <strong><%= comment.author.username %></strong> | <em class="tinyText"> 20th September 2018 13:45</em>
+                        <strong><%= comment.author.username %></strong> | <em class="tinyText"> <%=comment.date %></em>
                         <p><%=comment.text%></p>
+                        <% console.log(comment.date); %>
                     </div>
                     <div class="commentButtons">
                         <% if (currentUser && comment.author.id.equals(currentUser._id)){ %>
@@ -105,3 +106,4 @@
         </section>
     </div>
 </div>
+<% include ../partials/footer %>

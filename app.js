@@ -53,15 +53,11 @@ app.use((req, res, next) => { //Pushes Req.User to all routes as currentUser
 //seedDB(); // Seed the DB
 
 //routes
-app.get('/test', (req,res) => {
-    console.log("Loading test page")
-    res.render('test');
-});
-
 app.use(authRoutes);
 app.use("/trails/:id/comments", commentRoutes);
 app.use("/trails", trailRoutes);
 app.use("/", indexRoutes);
+app.use("*", indexRoutes);
 
 //Server Listener
 app.listen('3000', () => {
