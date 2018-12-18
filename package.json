@@ -1,10 +1,11 @@
 {
-  "name": "Stroll Trek and Run",
+  "name": "stroll-trek-run",
   "version": "1.0.0",
   "description": "Hiking CRUD app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Lukie Kang",
   "license": "MIT",
