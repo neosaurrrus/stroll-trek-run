@@ -85,7 +85,7 @@ router.post('/', middleware.isLoggedIn, (req, res) => {
                         day: 'numeric'
                     };
                     var today = new Date();
-                    comment.date = today.toUTCString("en-US", dateOptions)
+                    comment.date = today.toLocaleDateString("en-US", dateOptions)
                     console.log(comment.date);
                     comment.save();
                     trail.comments.push(comment);

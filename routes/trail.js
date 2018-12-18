@@ -53,7 +53,7 @@ router.put('/:id', middleware.checkTrailOwnership, (req, res) => {
             res.redirect("/trails")
         } else {
             req.flash("success", "Trail has been successfully updated");
-            res.redirect("/trails/" + req.params.id)
+            res.redirect("/trails/" + req.params.id);
         }
     })
 })
@@ -64,7 +64,6 @@ router.get('/:id/edit', middleware.checkTrailOwnership, (req,res) => {
         if (err){
             res.redirect("back");
         }
-  
         res.render("trails/edit", { trail: foundTrail})
     })
 })

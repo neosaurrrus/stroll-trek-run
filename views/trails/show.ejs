@@ -14,12 +14,6 @@
                 </form>
             </div>
         <% } %>
-        </div>
-    </div>
-    <div>
-    <p></p>
-    </div>
-    <div class="showDetails">
         <section class="keyPoints">
                 <div class="keyDetails">
                     <div>
@@ -52,7 +46,7 @@
                             <p>Free Water</p>
                         </div>
                     <% } %>
-                
+    
                     <% if (trail.refreshments === true){ %>
                         <div class="trailFeature">
                             <i class="fas fa-2x fa-cookie-bite"></i>
@@ -73,34 +67,38 @@
                     <% } %>
                 </div>
         </section>
+        </div>
+        
+    </div>
+    <div class="showDetails">
+        
         <section class="about">
             <h2> The Trail</h2>
             <p><%=trail.description%></p>
         </section>
         <section>
             <div class="commentHeader">
-                <% if (trail.comments.length < 2){ %>
+                <% if (trail.comments.length === 0){ %>
+                    <h2>No one has made a comment. Be a Pioneer!</h2>
+                <% } else if (trail.comments.length === 1){ %>
                     <h2>Comment</h2>
                 <% } else { %>
-                    <h2><%= trail.comments.length %> comments</h2>
+                    <h2><%= trail.comments.length %> Comments</h2>
                 <% } %>  
                 <p><a href="<%=trail._id%>/comments/new"<button class="smallButton">Add a Comment</button></a></p>
             </div>
             <% trail.comments.forEach(comment => { %>
                 <div class="comment">
-                    <div class="commentText"> 
-                        <strong><%= comment.author.username %></strong> | <em class="tinyText"> <%=comment.date %></em>
-                        <p><%=comment.text%></p>
-                        <% console.log(comment.date); %>
-                    </div>
-                    <div class="commentButtons">
-                        <% if (currentUser && comment.author.id.equals(currentUser._id)){ %>
+                    <div><strong><%= comment.author.username %></strong> | <em class="tinyText"> <%=comment.date %></em></div>
+                    <div> 
+                         <% if (currentUser && comment.author.id.equals(currentUser._id)){ %>
                             <a href="/trails/<%= trail._id %>/comments/<%= comment._id %>/edit"> <button class="smallButton edit">Edit</button></a>
                             <form action="/trails/<%= trail._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                             <button class="smallButton delete">Delete</button>
                             </form>
-                    <% } %>
+                        <% } %>
                     </div>
+                    <p><%=comment.text%></p>
                 </div>
             <% }) %>
         </section>
