@@ -20,7 +20,7 @@ const express         = require('express'),
       trailRoutes     = require("./routes/trail"),
       authRoutes      = require("./routes/auth");
 
-mongoose.connect('mongodb://guest:regularSeal1@ds115353.mlab.com:15353/strolltrekrun');
+mongoose.connect(process.env.STRDB_URI);
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
